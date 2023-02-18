@@ -444,7 +444,7 @@ playerButton2.addEventListener('click' , function () {
         total2 += 1;
         playerH2.innerText= total2;
         count2 ++
-    }
+    } 
 })  
 
 restButton.addEventListener('click',function() {
@@ -456,14 +456,28 @@ restButton.addEventListener('click',function() {
     count2 = 0;
     total1 = 0;
     total2 = 0;
-})
+    playerButton1.disabled=false;
+    playerButton2.disabled=false;
+    playerH1.classList.remove('text-success');
+    playerH2.classList.remove('text-success');
+    playerH1.classList.remove('text-denger');
+    playerH2.classList.remove('text-denger');
+});
 
-if (playerH1 == dropDown.value) {
-    playerH1.style.color = 'green';
-    playerH2.style.color = 'red';
-}
+playerButton1.addEventListener('click',function() {
+    if (playerH1.textContent === dropDown.value) {
+        playerH1.classList.add('text-success');
+        playerH2.classList.add('text-denger');
+        playerButton1.disabled=true;
+        playerButton2.disabled=true;
+    }
+});
 
-if (playerH2 == dropDown.value) {
-    playerH2.style.color = 'green';
-    playerH1.style.color = 'red';
-}
+playerButton2.addEventListener('click',function() {
+    if (playerH2.textContent === dropDown.value) {
+        playerH2.classList.add('text-success');
+        playerH1.classList.add('text-denger');
+        playerButton1.disabled=true;
+        playerButton2.disabled=true;
+    }
+});
